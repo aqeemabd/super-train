@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VCard</title>
+
+    <style>
+      @font-face {
+        font-family: stabilGrosek;
+        src: url(Fonts/StabilGrotesk-Regular.otf);
+      }
+      @font-face {
+        font-family: stabilGrosek-light;
+        src: url(Fonts/StabilGrotesk-Light.otf);
+      }
+      @font-face {
+        font-family: stabilGrosek-bold;
+        src: url(Fonts/StabilGrotesk-Bold.otf);
+      }
+      @font-face {
+        font-family: stabilGrosek-black;
+        src: url(Fonts/StabilGrotesk-Black.otf);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .font-1 {
+        font-family: stabilGrosek;
+      }
+      .font-2 {
+        font-family: stabilGrosek-light;
+      }
+      .font-3 {
+        font-family: stabilGrosek-bold;
+      }
+      .font-4 {
+        font-family: stabilGrosek-black;
+      }
+
+      .main-container {
+        text-align: center;
+
+        border: 10px solid #58595b;
+        padding: 35px;
+      }
+
+      .details-container {
+        text-align: left;
+        padding-bottom: 45px;
+      }
+
+      .reset-p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .btn {
+        outline: none;
+        border: 1px solid #58595b;
+        padding: 10px;
+
+        color: #58595b;
+
+        cursor: pointer;
+      }
+
+      .fs-12 {
+        font-size: 12px;
+        color: #58595b;
+      }
+
+      .fs-20-bold {
+        font-size: 20px;
+        font-weight: bold;
+        color: #58595b;
+      }
+
+      .mb-n-10 {
+        margin-bottom: -10px;
+      }
+
+      p,
+      a {
+        text-decoration: none;
+      }
+
+      .img-style {
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+      }
+
+      .rounded-letter {
+        border: 1px solid #58595b;
+        border-radius: 50%;
+        font-size: 10px;
+
+        padding: 7px;
+        margin-right: 10px;
+
+        color: #ffff;
+        background-color: #58595b;
+      }
+
+      .grey-font {
+        color: #58595b;
+      }
+
+      .uppercase {
+        text-transform: uppercase;
+      }
+
+      #user_image {
+        /* width: 86px;
+        height: 80px; */
+        object-fit: cover;
+        object-position: 30% 2%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <div>
+        <img
+          src="assets/logo.png"
+          alt="Dentsu Creative"
+          style="height: 68px"
+        />
+      </div>
+      <div>
+        <img
+          id="user_image"
+          class="img-style"
+          src="assets/Andrew.jpg"
+          alt="Andrew Low"
+          height="100"
+          width="100"
+        />
+      </div>
+      <p class="reset-p mb-n-10 fs-20-bold uppercase font-4">Andrew Low</p>
+      <p class="reset-p fs-20-bold uppercase font-4">Dentsu Creative</p>
+      <p class="reset-p fs-12 font-1">Group Chief Creative Officer</p>
+      <div class="details-container">
+        <p class="font-2">
+          <span class="rounded-letter">E</span>
+          <a class="grey-font" href="mailto:andrew.low@dentsu.com"
+            >andrew.low@dentsu.com</a
+          >
+        </p>
+        <p class="font-2">
+          <span class="rounded-letter">T</span>
+          <a class="grey-font" href="tel:+60320805000">+603-2080 5000</a>
+        </p>
+        <p class="font-2">
+          <span class="rounded-letter">M</span>
+          <a class="grey-font" href="tel:+60123718703">+6012-371 8703</a>
+        </p>
+      </div>
+
+      <a id="save-btn" class="btn font-3"> View in Contacts </a>
+
+      <canvas id="canvasElement" style="display: none" />
+    </div>
+  </body>
+</html>
+
+<script>
+  let saveBtn = document.getElementById("save-btn");
+  let image = document.getElementById("user_image");
+
+  var canvasElmt = document.createElement("canvas");
+
+  var ctx = canvasElmt.getContext("2d");
+
+  image.onload = function () {
+    canvasElmt.width = image.width;
+    canvasElmt.height = image.height;
+    ctx.drawImage(image, 0, 0);
+  };
+
+  saveBtn.addEventListener("click", function () {
+    // Get the contact information from the website
+    var contact = {
+      name: "Andrew Low",
+      phone: "603-2080 5000",
+      mobile: "6012-371 8703",
+      email: "andrew.low@dentsu.com",
+      photo: canvasElmt.toDataURL("image/jpeg"), // Encode as JPEG
+    };
+
+    // Create a vCard file
+    var vcard =
+      "BEGIN:VCARD\nVERSION:4.0\nFN:" +
+      contact.name +
+      "\nTEL;TYPE=work,voice:" +
+      contact.phone +
+      "\nTEL;TYPE=cell,voice:" +
+      contact.mobile +
+      "\nEMAIL:" +
+      contact.email +
+      "\nPHOTO;ENCODING=b;TYPE=JPEG:" +
+      contact.photo +
+      "\nEND:VCARD";
+
+    var blob = new Blob([vcard], { type: "text/vcard" });
+    var url = URL.createObjectURL(blob);
+
+    const newLink = document.createElement("a");
+    newLink.download = contact.name + ".vcf";
+    newLink.textContent = contact.name;
+    newLink.href = url;
+
+    newLink.click();
+  });
+</script>
