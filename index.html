@@ -38,6 +38,7 @@
         padding: 0;
 
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
       }
@@ -58,8 +59,21 @@
       .main-container {
         text-align: center;
 
-        border: 10px solid #58595b;
+        background-color: #221E20;
+
+        /* border: 10px solid #58595b; */
+        color: #fff;
         padding: 35px;
+      }
+      .btn-container {
+        text-align: center;
+
+        background-color: #221E20;
+
+        /* border: 10px solid #58595b; */
+        color: #fff;
+        width: 15%;
+        margin-top: 20px;
       }
 
       .details-container {
@@ -74,23 +88,23 @@
 
       .btn {
         outline: none;
-        border: 1px solid #58595b;
+        /* border: 1px solid #58595b; */
         padding: 10px;
 
-        color: #58595b;
+        color: #fff;
 
         cursor: pointer;
       }
 
       .fs-12 {
         font-size: 12px;
-        color: #58595b;
+        color: #ffff;
       }
 
       .fs-20-bold {
         font-size: 20px;
         font-weight: 800;
-        color: #58595b;
+        color: #ffff;
       }
 
       .mb-n-10 {
@@ -122,6 +136,9 @@
 
       .grey-font {
         color: #58595b;
+      }
+      .white-font {
+        color: #ffff;
       }
 
       .uppercase {
@@ -159,6 +176,7 @@
       </div>
       <div>
         <img
+        style="    border: 4px solid white;"
           id="user_image"
           class="img-style"
           src="assets/Andrew-ori.png"
@@ -173,23 +191,26 @@
       <div class="details-container font-2">
         <div style="display: flex; margin-bottom: 15px; margin-top: 10px;">
           <div class="circle">E</div>
-          <a style="margin-left: 10px;" class="grey-font" href="mailto:andrew.low@dentsu.com"
+          <a style="margin-left: 10px;" class="white-font" href="mailto:andrew.low@dentsu.com"
             >andrew.low@dentsu.com</a
           >
         </div>
         <div style="display: flex; margin-bottom: 15px;">
           <div class="circle font-2">T</div>
-          <a style="margin-left: 10px;" class="grey-font" href="tel:+60320805000">+603-2080 5000</a>
+          <a style="margin-left: 10px;" class="white-font" href="tel:+60320805000">+603-2080 5000</a>
         </div>
         <div style="display: flex; margin-bottom: 15px;">
           <div class="circle font-2">M</div>
-          <a style="margin-left: 10px;" class="grey-font" href="tel:+60123718703">+6012-371 8703</a>
+          <a style="margin-left: 10px;" class="white-font" href="tel:+60123718703">+6012-371 8703</a>
         </div>
       </div>
 
-      <a id="save-btn" class="btn font-3"> View in Contacts </a>
-
+      <p class="font-2" style="font-size: 10px;">Save this contact by clicking the below link</p>
       <canvas id="canvasElement" style="display: none" />
+    </div>
+
+    <div class="btn-container">
+      <a id="save-btn" class="btn font-2"> Save Contact </a>
     </div>
   </body>
 </html>
@@ -233,6 +254,7 @@
       contact.email +
       "\nPHOTO;ENCODING=b;TYPE=image/jpeg:" +
       contact.photo +
+      "\nADR;TYPE=work:9th Floor Guoco Tower" +
       "\nEND:VCARD";
 
     var blob = new Blob([vcard], { type: "text/vcard" });
