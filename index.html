@@ -264,26 +264,23 @@
     };
 
     var vcard =
-      "BEGIN:VCARD\n" +
-      "VERSION:4.0\n" +
-      "FN:" +
-      contact.name +
-      "\n" +
-      "TEL;TYPE=work,voice:" +
-      contact.phone +
-      "\n" +
-      "TEL;TYPE=cell,voice:" +
-      contact.mobile +
-      "\n" +
-      "EMAIL;TYPE=work:" +
-      contact.email +
-      "\n" +
-      "PHOTO;ENCODING=b;TYPE=image:" +
-      contact.photo +
-      "\n" +
-      "ADR;TYPE=work:Level 9 Guoco Tower Damansara CityNo 6 Jalan DamanlelaDamansara HeightsKuala Lumpur 50490 Malaysia" +
-      "TITLE:Group Chief Creative Officer Dentsu Creative\n" +
-      "END:VCARD";
+  "BEGIN:VCARD\n" +
+  "VERSION:4.0\n" +
+  "FN:" + contact.name + "\n" +
+  "TEL;TYPE=WORK,VOICE:" + contact.phone + "\n" +
+  "TEL;TYPE=CELL,VOICE:" + contact.mobile + "\n" +
+  "EMAIL;TYPE=work:" + contact.email + "\n" +
+  "PHOTO;ENCODING=b;TYPE=image:" + contact.photo + "\n" +
+  "ADR;TYPE=WORK,PREF:;;" +
+  "Level 9 Guoco Tower\n" +
+  "Damansara City\n" +
+  "No 6 Jalan Damanlela\n" +
+  "Damansara Heights\n" +
+  "Kuala Lumpur 50490\n" +
+  "Malaysia\n" +
+  "ORG:" + "Denstu Creative" + "\n" +
+  "TITLE:" + "Group Chief Creative Officer" + "\n" +
+  "END:VCARD";
 
     var blob = new Blob([vcard], { type: "text/vcard" });
     var url = URL.createObjectURL(blob);
