@@ -175,7 +175,7 @@
         <img
           id="user_image"
           class="img-style"
-          src="assets/andrew-new.png"
+          src=""
           alt="Andrew Low"
           height="100"
           width="100"
@@ -234,6 +234,30 @@
 
   let base64 = "";
 
+  // Define the image source
+  var imageSrc = "assets/andrew-new.png";
+
+  // Create a new image object
+  var image = new Image();
+
+  // Set the image source to load the image
+  image.src = imageSrc;
+
+  // Once the image is loaded, perform the cropping and set it as the src of the img element
+  image.onload = function () {
+    var canvas = document.createElement('canvas');
+            canvas.width = 400;
+            canvas.height = 400;
+
+            var ctx = canvas.getContext('2d');
+            var offsetX = (image.width - 400) / 2 - 30; // Adjust horizontal offset for positioning to the left
+            var offsetY = 0; // Set vertical offset to 0 for top alignment
+            ctx.drawImage(image, offsetX, offsetY, 400, 400, 0, 0, 400, 400);
+
+            // Set the img element's src to the cropped image
+            imgElement.src = canvas.toDataURL('image/png'); // You can change the format if needed
+        };
+
   fetch(imgElement.src)
     .then((response) => response.blob())
     .then((blob) => {
@@ -261,119 +285,28 @@
       mobile: "+60 12 371 8703",
       email: "andrew.low@dentsu.com",
       photo: base64,
-      title: "Group Chief Creative Officer"
+      title: "Group Chief Creative Officer",
     };
 
-  //   var vcard =
-  // "BEGIN:VCARD\n" +
-  // "VERSION:4.0\n" +
-  // "FN:" + contact.name + "\n" +
-  // "TEL;TYPE=WORK,VOICE:" + contact.phone + "\n" +
-  // "TEL;TYPE=CELL,VOICE:" + contact.mobile + "\n" +
-  // "EMAIL;TYPE=work:" + contact.email + "\n" +
-  // "PHOTO;ENCODING=b;TYPE=image:" + contact.photo + "\n" +
-  // "ADR;TYPE=WORK,PREF:;;" +
-  // "Level 9 Guoco Tower\n" +
-  // "Damansara City\n" +
-  // "No 6 Jalan Damanlela\n" +
-  // "Damansara Heights\n" +
-  // "Kuala Lumpur 50490\n" +
-  // "Malaysia\n" +
-  // "ORG:" + "Dentsu Creative" + "\n" +
-  // "TITLE:" + contact.title + "\n" +
-  // "END:VCARD";
-//     const vcard = `
-//     BEGIN:VCARD
-// VERSION:4.0
-// FN:${contact.name}
-// ORG:Dentsu Creative
-// TITLE:${contact.title}
-// TEL;TYPE=WORK,VOICE:${contact.phone}
-// TEL;TYPE=CELL,VOICE:${contact.mobile}
-// ADR;TYPE=WORK:;;Level 9 Guoco Tower;Damansara City;No 6 Jalan Damanlela;Damansara Heights;Kuala Lumpur 50490;Malaysia
-// EMAIL;TYPE=WORK:${contact.email}
-// END:VCARD
-//     `;
-    //   var vcard =
-    // "BEGIN:VCARD\n" +
-    // "VERSION:3.0\n" +
-    // "FN:" + contact.name + "\n" +
-    // "TEL;TYPE=WORK,VOICE:" + contact.phone + "\n" +
-    // "TEL;TYPE=CELL,VOICE:" + contact.mobile + "\n" +
-    // "EMAIL;TYPE=work:" + contact.email + "\n" +
-    // "PHOTO;ENCODING=b;TYPE=image:" + contact.photo + "\n" +
-    // "ADR;TYPE=WORK,PREF:;;" +
-    // "Level 9 Guoco Tower\n" +
-    // "Damansara City\n" +
-    // "No 6 Jalan Damanlela\n" +
-    // "Damansara Heights\n" +
-    // "Kuala Lumpur 50490\n" +
-    // "Malaysia\n" +
-    // "ORG:" + "Denstu Creative" + "\n" +
-    // "TITLE:" + "Group Chief Creative Officer" + "\n" +
-    // "END:VCARD";
-
-    // var vcard =
-    //   "BEGIN:VCARD\nVERSION:3.0\nFN:" +
-    //   contact.name +
-    //   "\nTEL;TYPE=work,voice:" +
-    //   contact.phone +
-    //   "\nTEL;TYPE=cell,voice:" +
-    //   contact.mobile +
-    //   "\nEMAIL:" +
-    //   contact.email +
-    //   "\nPHOTO;ENCODING=b;TYPE=image:" +
-    //   contact.photo +
-    //   "\nADR;TYPE=work:Level 9 Guoco Tower Damansara City No 6 Jalan Damanlela Damansara Heights Kuala Lumpur 50490 Malaysia" +
-    //   "\nEND:VCARD";
-
-  //   var vcard =
-  // "BEGIN:VCARD\nVERSION:3.0\nFN:" +
-  // contact.name +
-  // "\nTEL;TYPE=work,voice:" +
-  // contact.phone +
-  // "\nTEL;TYPE=cell,voice:" +
-  // contact.mobile +
-  // "\nEMAIL:" +
-  // contact.email +
-  // "\nPHOTO;ENCODING=b;TYPE=image:" +
-  // contact.photo +
-  // "\nADR;TYPE=work:Level 9 Guoco Tower Damansara City No 6 Jalan Damanlela Damansara Heights Kuala Lumpur 50490 Malaysia" +
-  // "\nTITLE:Group Chief Creative Officer" +
-  // "\nEND:VCARD";
-
-  // var vcard =
-  // "BEGIN:VCARD\nVERSION:3.0\nFN:" +
-  // contact.name +
-  // "\nTEL;TYPE=work,voice:" +
-  // contact.phone +
-  // "\nTEL;TYPE=cell,voice:" +
-  // contact.mobile +
-  // "\nEMAIL;TYPE=work:" +
-  // contact.email +
-  // "\nORG:Dentsu Creative" +
-  // "\nPHOTO;ENCODING=b;TYPE=image:" +
-  // contact.photo +
-  // "\nADR;TYPE=work:Level 9 Guoco Tower Damansara City No 6 Jalan Damanlela Damansara Heights Kuala Lumpur 50490 Malaysia" +
-  // "\nTITLE:Group Chief Creative Officer" +
-  // "\nEND:VCARD";
-
-  var vcard =
-  "BEGIN:VCARD\nVERSION:3.0\n" +
-  "N:" + contact.name + ";;;;" + // Last Name, First Name, Middle Name, Prefix, Suffix
-  "\nFN:" + contact.name + // Full Name
-  "\nORG:Dentsu Creative" +
-  "\nTEL;TYPE=work,voice:" + contact.phone +
-  "\nTEL;TYPE=cell,voice:" + contact.mobile +
-  "\nEMAIL;TYPE=work:" + contact.email +
-  "\nPHOTO;ENCODING=b;TYPE=image:" + contact.photo +
-  "\nADR;TYPE=work:Level 9 Guoco Tower Damansara City No 6 Jalan Damanlela Damansara Heights Kuala Lumpur 50490 Malaysia" +
-  "\nTITLE:Group Chief Creative Officer" +
-  "\nEND:VCARD";
-
-
-
-    // var vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:John Doe\nN:Doe;John;;;EMAIL:john.doe@email.com\nTEL:123-456-7890\nEND:VCARD";
+    var vcard =
+      "BEGIN:VCARD\nVERSION:3.0\n" +
+      "N:" +
+      contact.name +
+      ";;;;" +
+      "\nFN:" +
+      contact.name +
+      "\nORG:Dentsu Creative" +
+      "\nTEL;TYPE=work,voice:" +
+      contact.phone +
+      "\nTEL;TYPE=cell,voice:" +
+      contact.mobile +
+      "\nEMAIL;TYPE=work:" +
+      contact.email +
+      "\nPHOTO;ENCODING=b;TYPE=image:" +
+      contact.photo +
+      "\nADR;TYPE=work:Level 9 Guoco Tower Damansara City No 6 Jalan Damanlela Damansara Heights Kuala Lumpur 50490 Malaysia" +
+      "\nTITLE:Group Chief Creative Officer" +
+      "\nEND:VCARD";
 
     var blob = new Blob([vcard], { type: "text/vcard" });
     var url = URL.createObjectURL(blob);
