@@ -327,20 +327,37 @@
     //   "\nADR;TYPE=work:Level 9 Guoco Tower Damansara City No 6 Jalan Damanlela Damansara Heights Kuala Lumpur 50490 Malaysia" +
     //   "\nEND:VCARD";
 
-    var vcard =
+  //   var vcard =
+  // "BEGIN:VCARD\nVERSION:3.0\nFN:" +
+  // contact.name +
+  // "\nTEL;TYPE=work,voice:" +
+  // contact.phone +
+  // "\nTEL;TYPE=cell,voice:" +
+  // contact.mobile +
+  // "\nEMAIL:" +
+  // contact.email +
+  // "\nPHOTO;ENCODING=b;TYPE=image:" +
+  // contact.photo +
+  // "\nADR;TYPE=work:Level 9 Guoco Tower Damansara City No 6 Jalan Damanlela Damansara Heights Kuala Lumpur 50490 Malaysia" +
+  // "\nTITLE:Group Chief Creative Officer" +
+  // "\nEND:VCARD";
+
+  var vcard =
   "BEGIN:VCARD\nVERSION:3.0\nFN:" +
   contact.name +
   "\nTEL;TYPE=work,voice:" +
   contact.phone +
   "\nTEL;TYPE=cell,voice:" +
   contact.mobile +
-  "\nEMAIL:" +
+  "\nEMAIL;TYPE=work:" +
   contact.email +
+  "\nORG:Dentsu Creative" +
   "\nPHOTO;ENCODING=b;TYPE=image:" +
   contact.photo +
   "\nADR;TYPE=work:Level 9 Guoco Tower Damansara City No 6 Jalan Damanlela Damansara Heights Kuala Lumpur 50490 Malaysia" +
   "\nTITLE:Group Chief Creative Officer" +
   "\nEND:VCARD";
+
 
 
     // var vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:John Doe\nN:Doe;John;;;EMAIL:john.doe@email.com\nTEL:123-456-7890\nEND:VCARD";
