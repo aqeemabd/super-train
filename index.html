@@ -264,24 +264,24 @@
       title: "Group Chief Creative Officer"
     };
 
-    var vcard =
-  "BEGIN:VCARD\n" +
-  "VERSION:4.0\n" +
-  "FN:" + contact.name + "\n" +
-  "TEL;TYPE=WORK,VOICE:" + contact.phone + "\n" +
-  "TEL;TYPE=CELL,VOICE:" + contact.mobile + "\n" +
-  "EMAIL;TYPE=work:" + contact.email + "\n" +
-  "PHOTO;ENCODING=b;TYPE=image:" + contact.photo + "\n" +
-  "ADR;TYPE=WORK,PREF:;;" +
-  "Level 9 Guoco Tower\n" +
-  "Damansara City\n" +
-  "No 6 Jalan Damanlela\n" +
-  "Damansara Heights\n" +
-  "Kuala Lumpur 50490\n" +
-  "Malaysia\n" +
-  "ORG:" + "Dentsu Creative" + "\n" +
-  "TITLE:" + contact.title + "\n" +
-  "END:VCARD";
+  //   var vcard =
+  // "BEGIN:VCARD\n" +
+  // "VERSION:4.0\n" +
+  // "FN:" + contact.name + "\n" +
+  // "TEL;TYPE=WORK,VOICE:" + contact.phone + "\n" +
+  // "TEL;TYPE=CELL,VOICE:" + contact.mobile + "\n" +
+  // "EMAIL;TYPE=work:" + contact.email + "\n" +
+  // "PHOTO;ENCODING=b;TYPE=image:" + contact.photo + "\n" +
+  // "ADR;TYPE=WORK,PREF:;;" +
+  // "Level 9 Guoco Tower\n" +
+  // "Damansara City\n" +
+  // "No 6 Jalan Damanlela\n" +
+  // "Damansara Heights\n" +
+  // "Kuala Lumpur 50490\n" +
+  // "Malaysia\n" +
+  // "ORG:" + "Dentsu Creative" + "\n" +
+  // "TITLE:" + contact.title + "\n" +
+  // "END:VCARD";
 //     const vcard = `
 //     BEGIN:VCARD
 // VERSION:4.0
@@ -294,24 +294,26 @@
 // EMAIL;TYPE=WORK:${contact.email}
 // END:VCARD
 //     `;
-    //   var vcard =
-    // "BEGIN:VCARD\n" +
-    // "VERSION:4.0\n" +
-    // "FN:" + contact.name + "\n" +
-    // "TEL;TYPE=WORK,VOICE:" + contact.phone + "\n" +
-    // "TEL;TYPE=CELL,VOICE:" + contact.mobile + "\n" +
-    // "EMAIL;TYPE=work:" + contact.email + "\n" +
-    // "PHOTO;ENCODING=b;TYPE=image:" + contact.photo + "\n" +
-    // "ADR;TYPE=WORK,PREF:;;" +
-    // "Level 9 Guoco Tower\n" +
-    // "Damansara City\n" +
-    // "No 6 Jalan Damanlela\n" +
-    // "Damansara Heights\n" +
-    // "Kuala Lumpur 50490\n" +
-    // "Malaysia\n" +
-    // "ORG:" + "Denstu Creative" + "\n" +
-    // "TITLE:" + "Group Chief Creative Officer" + "\n" +
-    // "END:VCARD";
+      var vcard =
+    "BEGIN:VCARD\n" +
+    "VERSION:3.0\n" +
+    "FN:" + contact.name + "\n" +
+    "TEL;TYPE=WORK,VOICE:" + contact.phone + "\n" +
+    "TEL;TYPE=CELL,VOICE:" + contact.mobile + "\n" +
+    "EMAIL;TYPE=work:" + contact.email + "\n" +
+    "PHOTO;ENCODING=b;TYPE=image:" + contact.photo + "\n" +
+    "ADR;TYPE=WORK,PREF:;;" +
+    "Level 9 Guoco Tower\n" +
+    "Damansara City\n" +
+    "No 6 Jalan Damanlela\n" +
+    "Damansara Heights\n" +
+    "Kuala Lumpur 50490\n" +
+    "Malaysia\n" +
+    "ORG:" + "Denstu Creative" + "\n" +
+    "TITLE:" + "Group Chief Creative Officer" + "\n" +
+    "END:VCARD";
+
+    // var vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:John Doe\nN:Doe;John;;;EMAIL:john.doe@email.com\nTEL:123-456-7890\nEND:VCARD";
 
     var blob = new Blob([vcard], { type: "text/vcard" });
     var url = URL.createObjectURL(blob);
