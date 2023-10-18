@@ -359,8 +359,10 @@
   // "\nEND:VCARD";
 
   var vcard =
-  "BEGIN:VCARD\nVERSION:3.0\nORG:Dentsu Creative" + // Place ORG before FN and TITLE
-  "\nFN:" + contact.name +
+  "BEGIN:VCARD\nVERSION:3.0\n" +
+  "N:" + contact.name + ";;;;" + // Last Name, First Name, Middle Name, Prefix, Suffix
+  "\nFN:" + contact.name + // Full Name
+  "\nORG:Dentsu Creative" +
   "\nTEL;TYPE=work,voice:" + contact.phone +
   "\nTEL;TYPE=cell,voice:" + contact.mobile +
   "\nEMAIL;TYPE=work:" + contact.email +
