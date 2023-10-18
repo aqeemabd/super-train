@@ -234,31 +234,25 @@
 
   let base64 = "";
 
-  // Define the image source
   var imageSrc = "assets/andrew-new.png";
 
-  // Create a new image object
   var image = new Image();
 
-  // Set the image source to load the image
   image.src = imageSrc;
 
-  // Once the image is loaded, perform the cropping and set it as the src of the img element
   image.onload = function () {
     var canvas = document.createElement('canvas');
-            canvas.width = 400;
-            canvas.height = 400;
+    canvas.width = 400;
+    canvas.height = 400;
 
-            var ctx = canvas.getContext('2d');
-            var offsetX = (image.width - 400) / 2 - 30; // Adjust horizontal offset for positioning to the left
-            var offsetY = 0; // Set vertical offset to 0 for top alignment
-            ctx.drawImage(image, offsetX, offsetY, 400, 400, 0, 0, 400, 400);
+    var ctx = canvas.getContext('2d');
+    var offsetX = (image.width - 400) / 2 - 30;
+    var offsetY = 0;
+    ctx.drawImage(image, offsetX, offsetY, 400, 400, 0, 0, 400, 400);
 
-            // Set the img element's src to the cropped image
-            imgElement.src = canvas.toDataURL('image/png'); // You can change the format if needed
-        };
+    imgElement.src = canvas.toDataURL('image/png');
 
-  fetch(imgElement.src)
+    fetch(imgElement.src)
     .then((response) => response.blob())
     .then((blob) => {
       var reader = new FileReader();
@@ -277,6 +271,8 @@
     .catch((error) => {
       console.error("Error loading image:", error);
     });
+
+  };
 
   saveBtn.addEventListener("click", () => {
     var contact = {
