@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dentsu.Petronas</title>
+    <title>Dentsu Creative</title>
 
     <style>
       @font-face {
@@ -261,16 +261,22 @@
       mobile: "+60 12 371 8703",
       email: "andrew.low@dentsu.com",
       photo: base64,
+      title: "Group Chief Creative Officer"
     };
 
-    var vcard =
-      "BEGIN:VCARD\nVERSION:4.0\nFN:" +
-      contact.name +
-      "\nTEL;TYPE=work,voice:" +
-      contact.phone +
-      "\nEMAIL:" +
-      contact.email +
-      "\nEND:VCARD";
+    const vCardData = `
+    BEGIN:VCARD
+VERSION:3.0
+FN:${contact.name}
+ORG:Dentsu Creative
+TITLE:${contact.title}
+TEL;TYPE=WORK,VOICE:${contact.phone}
+TEL;TYPE=CELL,VOICE:${contact.mobile}
+ADR;TYPE=WORK:;;Level 9 Guoco Tower;Damansara City;No 6 Jalan Damanlela;Damansara Heights;Kuala Lumpur 50490;Malaysia
+EMAIL;TYPE=WORK:${contact.email}
+PHOTO;ENCODING=b;TYPE=PNG:${contact.photo}
+END:VCARD
+    `;
     //   var vcard =
     // "BEGIN:VCARD\n" +
     // "VERSION:4.0\n" +
