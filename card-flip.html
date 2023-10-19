@@ -265,7 +265,11 @@
         </div>
         <div class="flip-card-back">
           <div>
-            <img src="assets/Andrew QR.png" alt="Andrew QR" style="height: 100%; width: 80%;" />
+            <img
+              src="assets/Andrew QR.png"
+              alt="Andrew QR"
+              style="height: 100%; width: 80%"
+            />
           </div>
         </div>
       </div>
@@ -289,38 +293,45 @@
   image.src = imageSrc;
 
   image.onload = function () {
-    var canvas = document.createElement('canvas');
+    var canvas = document.createElement("canvas");
     canvas.width = 400;
     canvas.height = 400;
 
-    var ctx = canvas.getContext('2d');
+    var ctx = canvas.getContext("2d");
     var offsetX = (image.width - 400) / 2 - 30;
     var offsetY = 0;
     ctx.drawImage(image, offsetX, offsetY, 400, 400, 0, 0, 400, 400);
 
-    imgElement.src = canvas.toDataURL('image/png');
+    imgElement.src = canvas.toDataURL("image/png");
 
     fetch(imgElement.src)
-    .then((response) => response.blob())
-    .then((blob) => {
-      var reader = new FileReader();
+      .then((response) => response.blob())
+      .then((blob) => {
+        var reader = new FileReader();
 
-      reader.onload = function () {
-        var base64Image = reader.result;
-        var base64ImageWithoutPrefix = base64Image.replace(
-          /^data:image\/\w+;base64,/,
-          ""
-        );
-        base64 = base64ImageWithoutPrefix;
-      };
+        reader.onload = function () {
+          var base64Image = reader.result;
+          var base64ImageWithoutPrefix = base64Image.replace(
+            /^data:image\/\w+;base64,/,
+            ""
+          );
+          base64 = base64ImageWithoutPrefix;
+        };
 
-      reader.readAsDataURL(blob);
-    })
-    .catch((error) => {
-      console.error("Error loading image:", error);
-    });
-
+        reader.readAsDataURL(blob);
+      })
+      .catch((error) => {
+        console.error("Error loading image:", error);
+      });
   };
+
+  document.querySelector(".flip-card").addEventListener("click", function () {
+    const cardInner = this.querySelector(".flip-card-inner");
+    cardInner.style.transform =
+      cardInner.style.transform === "rotateY(180deg)"
+        ? "rotateY(0deg)"
+        : "rotateY(180deg)";
+  });
 
   saveBtn.addEventListener("click", () => {
     var contact = {
