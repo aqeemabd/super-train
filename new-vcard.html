@@ -364,13 +364,13 @@
 
   image.onload = function () {
     var canvas = document.createElement("canvas");
-    canvas.width = 400;
-    canvas.height = 400;
+    canvas.width = 800;
+    canvas.height = 800;
 
     var ctx = canvas.getContext("2d");
-    var offsetX = (image.width - 400) / 2 - 30;
+    var offsetX = (image.width - 800) / 2 - 30;
     var offsetY = 0;
-    ctx.drawImage(image, offsetX, offsetY, 100, 100, 0, 0, 100, 100);
+    ctx.drawImage(image, offsetX, offsetY, 0, 0, 0, 0, 0, 0);
 
     imgElement.src = canvas.toDataURL("image/png");
 
