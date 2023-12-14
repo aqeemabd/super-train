@@ -368,8 +368,11 @@
     canvas.height = 100;
 
     var ctx = canvas.getContext("2d");
-    var offsetX = (image.width - 100) / 2 - 30;
-    var offsetY = 0;
+
+    // Calculate offsetX and offsetY to center the image horizontally and vertically
+    var offsetX = (image.width - 100) / 2; // Center horizontally
+    var offsetY = (image.height - 100) / 2; // Center vertically
+
     ctx.drawImage(image, offsetX, offsetY, 100, 100, 0, 0, 100, 100);
 
     imgElement.src = canvas.toDataURL("image/png");
