@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dentsu Creative</title>
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://www.dentsucreative.com/favicon.ico"
+    />
+
+    <script
+      type="text/javascript"
+      src="https://dnc.dotdentsucreative.com/assets/js/qr-code-styling.js"
+    ></script>
+
+    <style>
+      @font-face {
+        font-family: stabilGrosek;
+        src: url(assets/Fonts/StabilGrotesk-Regular.otf);
+      }
+      @font-face {
+        font-family: stabilGrosek-light;
+        src: url(assets/Fonts/StabilGrotesk-Light.otf);
+      }
+      @font-face {
+        font-family: stabilGrosek-bold;
+        src: url(assets/Fonts/StabilGrotesk-Bold.otf);
+      }
+      @font-face {
+        font-family: stabilGrosek-black;
+        src: url(assets/Fonts/StabilGrotesk-Black.otf);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .font-1 {
+        font-family: stabilGrosek;
+      }
+      .font-2 {
+        font-family: stabilGrosek-light;
+      }
+      .font-3 {
+        font-family: stabilGrosek-bold;
+      }
+      .font-4 {
+        font-family: stabilGrosek-black;
+      }
+
+      .main-container {
+        text-align: center;
+
+        color: #000;
+        padding-top: 35px;
+
+        border: 4px solid #000;
+      }
+
+      .flip-card {
+        background-color: transparent;
+        width: 300px;
+        height: 550px;
+        perspective: 1000px;
+      }
+
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .flip-card-front,
+      .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+
+      .flip-card-front {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .flip-card-back {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-image: url(assets/dentsu_bg.jpg);
+        background-size: cover;
+        background-position: center;
+
+        color: white;
+        transform: rotateY(180deg);
+      }
+
+      p,
+      a {
+        text-decoration: none;
+      }
+
+      .reset-p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .fs-12 {
+        font-size: 12px;
+        color: #000;
+      }
+
+      .fs-20-bold {
+        font-size: 20px;
+        font-weight: 800;
+        color: #000;
+      }
+
+      .fs-12-white {
+        font-size: 12px;
+        color: #ffff;
+      }
+
+      .fs-20-bold-white {
+        font-size: 20px;
+        font-weight: 800;
+        color: #ffff;
+      }
+
+      .uppercase {
+        text-transform: uppercase;
+      }
+
+      .mb-n-10 {
+        margin-bottom: -10px;
+      }
+
+      .img-style {
+        border-radius: 50%;
+        margin-top: 30px;
+      }
+
+      .rounded-letter {
+        border: 1px solid #58595b;
+        border-radius: 50%;
+        font-size: 10px;
+
+        padding: 7px;
+        margin-right: 10px;
+
+        color: #000;
+        background-color: #58595b;
+      }
+
+      #user_image {
+        object-fit: cover;
+        object-position: 40%;
+      }
+
+      #qrcode canvas {
+        height: 100%;
+        width: 80%;
+        border-radius: 20px;
+      }
+
+      .circle {
+        border-radius: 50%;
+        width: 26px;
+        height: 26px;
+        padding: 2px;
+        background: #000;
+        border: 1px solid #000;
+        color: #ffff;
+        text-align: center;
+        font-size: 13px;
+      }
+
+      .details-container {
+        font-size: 12px;
+        text-align: left;
+
+        width: 100%;
+        padding-bottom: 45px;
+        padding-left: 6px;
+        padding-top: 8px;
+      }
+
+      .details-container-child {
+        display: flex;
+        align-items: center;
+
+        padding-left: 18px;
+        margin-bottom: 15px;
+      }
+
+      .btn-container {
+        background: #000;
+        width: 100%;
+        color: #ffff;
+        font-size: 13px;
+        padding: 5px;
+      }
+
+      .btn {
+        outline: none;
+
+        padding: 10px;
+
+        color: #fff;
+
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front main-container">
+          <div>
+            <img
+              src="assets/dentsu-word-logo.png"
+              alt="Dentsu Creative"
+              style="width: 30%"
+            />
+          </div>
+          <div>
+            <img
+              id="user_image"
+              class="img-style"
+              src=""
+              alt="Kunal Roy"
+              height="100"
+              width="100"
+            />
+          </div>
+
+          <p class="reset-p font-1 fs-20-bold uppercase mb-n-10" id="fullname">
+            KUNAL ROY
+          </p>
+          <p class="reset-p font-1 fs-20-bold uppercase">Dentsu Creative</p>
+          <p class="reset-p font-1 fs-12" id="occupation">
+            CEO - Dentsu Creative
+          </p>
+
+          <div class="details-container font-2">
+            <div class="details-container-child" style="margin-top: 10px">
+              <div class="circle">E</div>
+              <a
+                style="margin-left: 10px"
+                class="fs-12"
+                href="mailto:kunalroy@dentsu.com>"
+                id="email"
+              >
+                kunalroy@dentsu.com
+              </a>
+            </div>
+            <div class="details-container-child">
+              <div class="circle font-2">T</div>
+              <a style="margin-left: 10px" class="fs-12" href="tel:+60320805000"
+                >+603-2080 5000</a
+              >
+            </div>
+            <div class="details-container-child">
+              <div class="circle font-2">M</div>
+              <a
+                style="margin-left: 10px"
+                class="fs-12"
+                href="tel:+60125914110"
+                id="mobile_number"
+                >+6012-591 4110</a
+              >
+            </div>
+          </div>
+
+          <p class="font-2 fs-12">
+            To save my contact: <br />
+            Click on <span class="font-3">New Contact</span>. Click on
+            <span class="font-3">Done</span>.
+          </p>
+
+          <div class="btn-container">
+            <a id="save-btn" class="btn font-2"> View in Contacts </a>
+          </div>
+        </div>
+
+        <div class="flip-card-back">
+          <div>
+            <div>
+              <img
+                src="assets/dentsu-word-logo-white.png"
+                alt="Dentsu Creative"
+                style="width: 30%; margin-bottom: 24px"
+              />
+            </div>
+            <p class="reset-p fs-20-bold-white uppercase font-1 mb-n-10">
+              KUNAL ROY
+            </p>
+            <p class="reset-p fs-20-bold-white uppercase font-1">
+              Dentsu Creative
+            </p>
+            <p class="reset-p fs-12-white font-1" style="margin-bottom: 50px">
+              CEO - Dentsu Creative
+            </p>
+            <div id="qrcode">
+              <img
+                src="assets/kunalroy-qr.png"
+                alt=""
+                height="200"
+                width="200"
+              />
+            </div>
+            <p class="font-2 fs-12" style="color: #000">
+              Scan to <span class="font-3">Save My Contact Details.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  const saveBtn = document.getElementById("save-btn");
+  const imgElement = document.getElementById("user_image");
+
+  let base64 = "";
+
+  var imageSrc = "assets/kunalroy.png";
+
+  var image = new Image();
+
+  image.src = imageSrc;
+
+  image.onload = function () {
+    var canvas = document.createElement("canvas");
+    canvas.width = 400;
+    canvas.height = 400;
+
+    var ctx = canvas.getContext("2d");
+    var offsetX = (image.width - 400) / 2 - 30;
+    var offsetY = 0;
+    ctx.drawImage(image, offsetX, offsetY, 400, 400, 0, 0, 400, 400);
+
+    imgElement.src = canvas.toDataURL("image/png");
+
+    fetch(imgElement.src)
+      .then((response) => response.blob())
+      .then((blob) => {
+        var reader = new FileReader();
+
+        reader.onload = function () {
+          var base64Image = reader.result;
+          var base64ImageWithoutPrefix = base64Image.replace(
+            /^data:image\/\w+;base64,/,
+            ""
+          );
+          base64 = base64ImageWithoutPrefix;
+        };
+
+        reader.readAsDataURL(blob);
+      })
+      .catch((error) => {
+        console.error("Error loading image:", error);
+      });
+  };
+
+  document.querySelector(".flip-card").addEventListener("click", function () {
+    const cardInner = this.querySelector(".flip-card-inner");
+    cardInner.style.transform =
+      cardInner.style.transform === "rotateY(180deg)"
+        ? "rotateY(0deg)"
+        : "rotateY(180deg)";
+  });
+
+  saveBtn.addEventListener("click", () => {
+    var contact = {
+      name: "Dentsu Creative@Andrew Low",
+      phone: "+60 3 2080 5000",
+      mobile: "+60 12 371 8703",
+      email: "andrew.low@dentsu.com",
+      photo: base64,
+      title: "Group Chief Creative Officer",
+    };
+
+    var vcard =
+      "BEGIN:VCARD\nVERSION:3.0\n" +
+      "N:" +
+      contact.name +
+      ";;;;" +
+      "\nFN:" +
+      contact.name +
+      "\nORG:Dentsu Creative" +
+      "\nTEL;TYPE=work,voice:" +
+      contact.phone +
+      "\nTEL;TYPE=cell,voice:" +
+      contact.mobile +
+      "\nEMAIL;TYPE=work:" +
+      contact.email +
+      "\nPHOTO;ENCODING=b;TYPE=image:" +
+      contact.photo +
+      "\nADR;TYPE=work:Level 9 Guoco Tower Damansara City No 6 Jalan Damanlela Damansara Heights Kuala Lumpur 50490 Malaysia" +
+      "\nTITLE:Group Chief Creative Officer" +
+      "\nEND:VCARD";
+
+    var blob = new Blob([vcard], { type: "text/vcard" });
+    var url = URL.createObjectURL(blob);
+
+    const newLink = document.createElement("a");
+    newLink.download = contact.name + ".vcf";
+    newLink.textContent = contact.name;
+    newLink.href = url;
+
+    newLink.click();
+  });
+</script>
