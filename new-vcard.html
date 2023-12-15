@@ -367,6 +367,7 @@
         email: email.replace(/\s+/g, ''),
         photo: base64,
         title: occupation,
+        phone: "+60 12 591 4110",
       };
 
       let fullName = contact.name;
@@ -383,13 +384,15 @@
         "\nFN:" +
         contact.name +
         "\nORG:Dentsu Creative" +
+        "\nTEL;TYPE=work,voice:" +
+        contact.phone +
         "\nTEL;TYPE=cell,voice:" +
         contact.mobile +
         "\nEMAIL;TYPE=work:" +
         contact.email +
         "\nPHOTO;ENCODING=b;TYPE=image:" +
         contact.photo +
-        "\nADR;TYPE=work:<?php echo $data['address'];?>" +
+        "\nADR;TYPE=work:Level 9 Guoco Tower Damansara City No 6 Jalan Damanlela Damansara Heights Kuala Lumpur 50490 Malaysia" +
         "\nTITLE:"+contact.title +
         "\nEND:VCARD";
       var blob = new Blob([vcard], { type: "text/vcard" });
