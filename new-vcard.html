@@ -356,7 +356,7 @@
 
   let base64 = "";
 
-  var imageSrc = "assets/aqeemabdullah.png";
+  var imageSrc = "assets/kunalroy.png";
 
   var image = new Image();
 
@@ -370,8 +370,8 @@
     var ctx = canvas.getContext("2d");
 
     // Calculate scaling factors to fit the image within the canvas
-    var scaleX = 240 / image.width;
-    var scaleY = 240 / image.height;
+    var scaleX = 220 / image.width;
+    var scaleY = 220 / image.height;
     var scale = Math.min(scaleX, scaleY); // Maintain aspect ratio
 
     // Calculate the centered position within the canvas
@@ -414,12 +414,12 @@
 
   saveBtn.addEventListener("click", () => {
     var contact = {
-      name: "Dentsu Creative@Andrew Low",
+      name: "Dentsu Creative@Kunal Roy",
       phone: "+60 3 2080 5000",
-      mobile: "+60 12 371 8703",
-      email: "andrew.low@dentsu.com",
+      mobile: "+60 12 591 4110",
+      email: "kunalroy@dentsu.com",
       photo: base64,
-      title: "Group Chief Creative Officer",
+      title: "CEO - Dentsu Creative",
     };
 
     var vcard =
@@ -439,7 +439,7 @@
       "\nPHOTO;ENCODING=b;TYPE=image:" +
       contact.photo +
       "\nADR;TYPE=work:Level 9 Guoco Tower Damansara City No 6 Jalan Damanlela Damansara Heights Kuala Lumpur 50490 Malaysia" +
-      "\nTITLE:Group Chief Creative Officer" +
+      "\nTITLE:CEO - Dentsu Creative" +
       "\nEND:VCARD";
 
     var blob = new Blob([vcard], { type: "text/vcard" });
