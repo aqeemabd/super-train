@@ -354,130 +354,44 @@
     const saveBtn = document.getElementById("save-btn");
     const imgElement = document.getElementById("user_image");
 
-    let base64 = "";
-
-    var c = document.createElement('canvas');
-    var img = document.getElementById('user_image');
-    c.height = img.naturalHeight;
-    c.width = img.naturalWidth;
-    var ctx = c.getContext('2d');
-
-    ctx.drawImage(img, 0, 0, c.width, c.height);
-    var base64String = c.toDataURL();
-    var base64ImageWithoutPrefix = base64String.replace(
-    "data:image/png;base64,",
-    ""
-    );
-
-    base64 = base64ImageWithoutPrefix;
-
-  //   var imageSrc = imgElement.src;
-
-  //   var image = new Image();
-
-  //   image.src = imageSrc;
-
-  //   image.onload = function () {
-
-  //     // var canvas = document.createElement('canvas');
-  //     // canvas.width = 400;
-  //     // canvas.height = 400;
-
-  //     // var ctx = canvas.getContext('2d');
-  //     // var offsetX = (image.width - 400) / 2 - 30;
-  //     // var offsetY = 0;
-  //     // ctx.drawImage(image, offsetX, offsetY, 400, 400, 0, 0, 400, 400);
-
-  //     // var canvas = document.createElement("canvas");
-
-  //     // canvas.width = 100;
-  //     // canvas.height = 100;
-
-  //     // var ctx = canvas.getContext("2d");
-
-  //     // // Calculate scaling factors to fit the image within the canvas
-  //     // var scaleX = 100 / image.width;
-  //     // var scaleY = 100 / image.height;
-  //     // var scale = Math.min(scaleX, scaleY); // Maintain aspect ratio
-
-  //     // // Calculate the centered position within the canvas
-  //     // var offsetX = (100 - image.width * scale) / 2;
-  //     // var offsetY = (100 - image.height * scale) / 2;
-
-  //     // // Draw the image with the calculated scaling and offsets
-  //     // ctx.drawImage(
-  //     //   image,
-  //     //   0,
-  //     //   0,
-  //     //   image.width,
-  //     //   image.height,
-  //     //   offsetX,
-  //     //   offsetY,
-  //     //   image.width * scale,
-  //     //   image.height * scale
-  //     // );
-
-  //     imgElement.src = canvas.toDataURL("image/png");
-
-  //     fetch(imgElement.src)
-  //       .then((response) => response.blob())
-  //       .then((blob) => {
-  //         var reader = new FileReader();
-
-  //         reader.onload = function () {
-  //           var base64Image = reader.result;
-  //           var base64ImageWithoutPrefix = base64Image.replace(
-  //             /^data:image\/\w+;base64,/,
-  //             ""
-  //           );
-  //           base64 = base64ImageWithoutPrefix;
-  //         };
-
-  //         reader.readAsDataURL(blob);
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error loading image:", error);
-  //       });
-    // };
-
-    document.querySelector(".flip-card").addEventListener("click", function () {
-      const cardInner = this.querySelector(".flip-card-inner");
-      cardInner.style.transform =
-        cardInner.style.transform === "rotateY(180deg)"
-          ? "rotateY(0deg)"
-          : "rotateY(180deg)";
-    });
-
     saveBtn.addEventListener("click", () => {
-      var contact = {
-        name: "Dentsu Creative@Kunal Roy",
-        phone: "+60 3 2080 5000",
-        mobile: "+60 12 591 4110",
-        email: "kunalroy@dentsu.com",
+      const fullname = document.getElementById("fullname").textContent;
+      const occupation = document.getElementById("occupation").textContent;
+      const email = document.getElementById("email").textContent;
+      const mobile_number = document.getElementById("mobile_number").textContent;
+      const base64 = getBase64img();
+
+      let contact = {
+        name: `Dentsu Creative@${fullname}`,
+        mobile: mobile_number,
+        email: email.replace(/\s+/g, ''),
         photo: base64,
-        title: "CEO - Dentsu Creative",
+        title: occupation,
       };
 
-      var vcard =
-        "BEGIN:VCARD\nVERSION:3.0\n" +
+      let fullName = contact.name;
+      let nameParts = fullName.split(" ");
+      let lastName = nameParts.pop();
+      let firstName = nameParts.join(" ");
+
+      let vcard =
+        "BEGIN:VCARD\nVERSION:4.0\n" +
         "N:" +
-        contact.name +
-        ";;;;" +
+        lastName + ";" +
+        firstName +
+        ";;;" +
         "\nFN:" +
         contact.name +
         "\nORG:Dentsu Creative" +
-        "\nTEL;TYPE=work,voice:" +
-        contact.phone +
         "\nTEL;TYPE=cell,voice:" +
         contact.mobile +
         "\nEMAIL;TYPE=work:" +
         contact.email +
         "\nPHOTO;ENCODING=b;TYPE=image:" +
         contact.photo +
-        "\nADR;TYPE=work:Level 9 Guoco Tower Damansara City No 6 Jalan Damanlela Damansara Heights Kuala Lumpur 50490 Malaysia" +
-        "\nTITLE:CEO - Dentsu Creative" +
+        "\nADR;TYPE=work:<?php echo $data['address'];?>" +
+        "\nTITLE:"+contact.title +
         "\nEND:VCARD";
-
       var blob = new Blob([vcard], { type: "text/vcard" });
       var url = URL.createObjectURL(blob);
 
@@ -488,4 +402,69 @@
 
       newLink.click();
     });
+
+    function getBase64img(){
+        var c = document.createElement('canvas');
+        var img = document.getElementById('user_image');
+        c.height = img.naturalHeight;
+        c.width = img.naturalWidth;
+        var ctx = c.getContext('2d');
+
+        ctx.drawImage(img, 0, 0, c.width, c.height);
+        var base64String = c.toDataURL();
+        var base64ImageWithoutPrefix = base64String.replace(
+          "data:image/png;base64,",
+          ""
+        );
+        return base64ImageWithoutPrefix;
+    }
+
+    document.querySelector(".flip-card").addEventListener("click", function () {
+      const cardInner = this.querySelector(".flip-card-inner");
+      cardInner.style.transform =
+        cardInner.style.transform === "rotateY(180deg)"
+          ? "rotateY(0deg)"
+          : "rotateY(180deg)";
+    });
+
+    // saveBtn.addEventListener("click", () => {
+    //   var contact = {
+    //     name: "Dentsu Creative@Kunal Roy",
+    //     phone: "+60 3 2080 5000",
+    //     mobile: "+60 12 591 4110",
+    //     email: "kunalroy@dentsu.com",
+    //     photo: base64,
+    //     title: "CEO - Dentsu Creative",
+    //   };
+
+    //   var vcard =
+    //     "BEGIN:VCARD\nVERSION:3.0\n" +
+    //     "N:" +
+    //     contact.name +
+    //     ";;;;" +
+    //     "\nFN:" +
+    //     contact.name +
+    //     "\nORG:Dentsu Creative" +
+    //     "\nTEL;TYPE=work,voice:" +
+    //     contact.phone +
+    //     "\nTEL;TYPE=cell,voice:" +
+    //     contact.mobile +
+    //     "\nEMAIL;TYPE=work:" +
+    //     contact.email +
+    //     "\nPHOTO;ENCODING=b;TYPE=image:" +
+    //     contact.photo +
+    //     "\nADR;TYPE=work:Level 9 Guoco Tower Damansara City No 6 Jalan Damanlela Damansara Heights Kuala Lumpur 50490 Malaysia" +
+    //     "\nTITLE:CEO - Dentsu Creative" +
+    //     "\nEND:VCARD";
+
+    //   var blob = new Blob([vcard], { type: "text/vcard" });
+    //   var url = URL.createObjectURL(blob);
+
+    //   const newLink = document.createElement("a");
+    //   newLink.download = contact.name + ".vcf";
+    //   newLink.textContent = contact.name;
+    //   newLink.href = url;
+
+    //   newLink.click();
+    // });
 </script>
