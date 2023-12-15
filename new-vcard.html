@@ -356,88 +356,74 @@
 
   let base64 = "";
 
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
+  var imageSrc = imgElement.src;
 
-    // Set canvas dimensions to match the image
-    canvas.width = imgElement.width;
-    canvas.height = imgElement.height;
+  var image = new Image();
 
-    // Draw the image onto the canvas
-    ctx.drawImage(imgElement, 0, 0);
+  image.src = imageSrc;
 
-    // Get the base64 representation of the image from the canvas
-    base64 = canvas.toDataURL('image/png'); // Change 'image/jpeg' to the desired format if needed
-    console.log(base64);
+  image.onload = function () {
 
-//   var imageSrc = imgElement.src;
+    // var canvas = document.createElement('canvas');
+    // canvas.width = 400;
+    // canvas.height = 400;
 
-//   var image = new Image();
+    // var ctx = canvas.getContext('2d');
+    // var offsetX = (image.width - 400) / 2 - 30;
+    // var offsetY = 0;
+    // ctx.drawImage(image, offsetX, offsetY, 400, 400, 0, 0, 400, 400);
 
-//   image.src = imageSrc;
-
-//   image.onload = function () {
-
-//     var canvas = document.createElement('canvas');
-//     canvas.width = 400;
-//     canvas.height = 400;
-
-//     var ctx = canvas.getContext('2d');
-//     var offsetX = (image.width - 400) / 2 - 30;
-//     var offsetY = 0;
-//     ctx.drawImage(image, offsetX, offsetY, 400, 400, 0, 0, 400, 400);
-
-//     // var canvas = document.createElement("canvas");
+    var canvas = document.createElement("canvas");
     
-//     // canvas.width = 200;
-//     // canvas.height = 200;
+    canvas.width = 100;
+    canvas.height = 100;
 
-//     // var ctx = canvas.getContext("2d");
+    var ctx = canvas.getContext("2d");
 
-//     // // Calculate scaling factors to fit the image within the canvas
-//     // var scaleX = 220 / image.width;
-//     // var scaleY = 220 / image.height;
-//     // var scale = Math.min(scaleX, scaleY); // Maintain aspect ratio
+    // Calculate scaling factors to fit the image within the canvas
+    var scaleX = 100 / image.width;
+    var scaleY = 100 / image.height;
+    var scale = Math.min(scaleX, scaleY); // Maintain aspect ratio
 
-//     // // Calculate the centered position within the canvas
-//     // var offsetX = (100 - image.width * scale) / 2;
-//     // var offsetY = (100 - image.height * scale) / 2;
+    // Calculate the centered position within the canvas
+    var offsetX = (100 - image.width * scale) / 2;
+    var offsetY = (100 - image.height * scale) / 2;
 
-//     // // Draw the image with the calculated scaling and offsets
-//     // ctx.drawImage(
-//     //   image,
-//     //   0,
-//     //   0,
-//     //   image.width,
-//     //   image.height,
-//     //   offsetX,
-//     //   offsetY,
-//     //   image.width * scale,
-//     //   image.height * scale
-//     // );
+    // Draw the image with the calculated scaling and offsets
+    ctx.drawImage(
+      image,
+      0,
+      0,
+      image.width,
+      image.height,
+      offsetX,
+      offsetY,
+      image.width * scale,
+      image.height * scale
+    );
 
-//     imgElement.src = canvas.toDataURL("image/png");
+    imgElement.src = canvas.toDataURL("image/png");
 
-//     fetch(imgElement.src)
-//       .then((response) => response.blob())
-//       .then((blob) => {
-//         var reader = new FileReader();
+    fetch(imgElement.src)
+      .then((response) => response.blob())
+      .then((blob) => {
+        var reader = new FileReader();
 
-//         reader.onload = function () {
-//           var base64Image = reader.result;
-//           var base64ImageWithoutPrefix = base64Image.replace(
-//             /^data:image\/\w+;base64,/,
-//             ""
-//           );
-//           base64 = base64ImageWithoutPrefix;
-//         };
+        reader.onload = function () {
+          var base64Image = reader.result;
+          var base64ImageWithoutPrefix = base64Image.replace(
+            /^data:image\/\w+;base64,/,
+            ""
+          );
+          base64 = base64ImageWithoutPrefix;
+        };
 
-//         reader.readAsDataURL(blob);
-//       })
-//       .catch((error) => {
-//         console.error("Error loading image:", error);
-//       });
-//   };
+        reader.readAsDataURL(blob);
+      })
+      .catch((error) => {
+        console.error("Error loading image:", error);
+      });
+  };
 
   document.querySelector(".flip-card").addEventListener("click", function () {
     const cardInner = this.querySelector(".flip-card-inner");
