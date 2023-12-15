@@ -185,7 +185,7 @@
 
       #user_image {
         object-fit: cover;
-        object-position: 40%;
+        /* object-position: 40%; */
       }
 
       #qrcode canvas {
@@ -258,8 +258,10 @@
             <img
               id="user_image"
               class="img-style"
-              src=""
+              src="assets/kunalroy.png"
               alt="Kunal Roy"
+              height="100"
+              width="100"
             />
           </div>
 
@@ -354,30 +356,51 @@
 
   let base64 = "";
 
-  var imageSrc = "assets/kunalroy.png";
+  var imageSrc = imgElement.src;
 
   var image = new Image();
 
   image.src = imageSrc;
 
   image.onload = function () {
-    var canvas = document.createElement("canvas");
-    canvas.width = 200;
-    canvas.height = 200;
 
-    var ctx = canvas.getContext("2d");
+    var canvas = document.createElement('canvas');
+    canvas.width = 400;
+    canvas.height = 400;
 
-    // Calculate scaling factors to fit the image within the canvas
-    var scaleX = 220 / image.width;
-    var scaleY = 220 / image.height;
-    var scale = Math.min(scaleX, scaleY); // Maintain aspect ratio
+    var ctx = canvas.getContext('2d');
+    var offsetX = (image.width - 400) / 2 - 30;
+    var offsetY = 0;
+    ctx.drawImage(image, offsetX, offsetY, 400, 400, 0, 0, 400, 400);
 
-    // Calculate the centered position within the canvas
-    var offsetX = (100 - image.width * scale) / 2;
-    var offsetY = (100 - image.height * scale) / 2;
+    // var canvas = document.createElement("canvas");
+    
+    // canvas.width = 200;
+    // canvas.height = 200;
 
-    // Draw the image with the calculated scaling and offsets
-    ctx.drawImage(image, 0, 0, image.width, image.height, offsetX, offsetY, image.width * scale, image.height * scale);
+    // var ctx = canvas.getContext("2d");
+
+    // // Calculate scaling factors to fit the image within the canvas
+    // var scaleX = 220 / image.width;
+    // var scaleY = 220 / image.height;
+    // var scale = Math.min(scaleX, scaleY); // Maintain aspect ratio
+
+    // // Calculate the centered position within the canvas
+    // var offsetX = (100 - image.width * scale) / 2;
+    // var offsetY = (100 - image.height * scale) / 2;
+
+    // // Draw the image with the calculated scaling and offsets
+    // ctx.drawImage(
+    //   image,
+    //   0,
+    //   0,
+    //   image.width,
+    //   image.height,
+    //   offsetX,
+    //   offsetY,
+    //   image.width * scale,
+    //   image.height * scale
+    // );
 
     imgElement.src = canvas.toDataURL("image/png");
 
