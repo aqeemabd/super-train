@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+      *,
+      h1,
+      h2,
+      h3 {
+        font-family: "Space Grotesk", sans-serif !important;
+      }
+      .main-img {
+        max-width: unset !important;
+        width: 82vw;
+        margin-left: -13%;
+      }
+
+      @media screen and (max-width: 1473.5px) {
+        .main-img {
+          margin-left: 14%;
+        }
+      }
+
+      @media screen and (max-width: 1581.5px) {
+        .main-img {
+          margin-left: 12%;
+        }
+      }
+
+      @media screen and (max-width: 1671.5px) and (min-width: 1581px) {
+        .main-img {
+          margin-left: 7%;
+        }
+      }
+
+      @media screen and (max-width: 2100px) and (min-width: 1920px) {
+        .main-img {
+          margin-left: -2.5%;
+        }
+      }
+
+      .cs {
+        --n: 1;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+        width: calc(var(--n) * 100%);
+        height: 50vw;
+        max-height: 100vh;
+
+        img {
+          width: 100%;
+          width: calc(800px / var(--n));
+        }
+      }
+
+      @media screen and (max-width: 1426px) {
+        .cs {
+          img {
+            width: 100%;
+            width: calc(550px / var(--n));
+          }
+        }
+      }
+
+      @media screen and (max-width: 885px) {
+        .cs {
+          img {
+            width: 100%;
+            width: calc(350px / var(--n));
+          }
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .cs {
+          img {
+            width: 100%;
+            width: calc(250px / var(--n));
+          }
+        }
+      }
+
+      @media screen and (max-width: 400px) {
+        .cs {
+          img {
+            width: 100%;
+            width: calc(200px / var(--n));
+          }
+        }
+      }
+
+      @media screen and (width: 280px) {
+        .cs {
+          img {
+            width: 100%;
+            width: calc(150px / var(--n));
+          }
+        }
+      }
+
+      .toEnterHeader {
+        font-size: 50px !important;
+      }
+
+      .toEnterDivChild {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .toEnterDivChild img {
+        width: 20%;
+      }
+      .toEnterDivChild p {
+        font-size: 20px !important;
+      }
+
+      @media screen and (max-width: 768px) {
+        .toEnterDivChild p {
+          font-size: 16px !important;
+        }
+
+        .toEnterHeader {
+          font-size: 30px !important;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .toEnterDivChild p {
+          font-size: 8px !important;
+        }
+
+        .toEnterHeader {
+          font-size: 20px !important;
+        }
+      }
+
+      @media screen and (min-width: 1426.5px) {
+        #toEnterMain {
+          margin-top: 8%;
+        }
+      }
+
+      .pink-gradient-header {
+        text-align: center;
+        font-size: 80px !important;
+        letter-spacing: -6px;
+
+        background: linear-gradient(
+          to right,
+          #951c2c,
+          #951c2c,
+          #bf263f,
+          #c32741
+        );
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+      }
+
+      @media screen and (max-width: 768px) {
+        .pink-gradient-header {
+          font-size: 60px !important;
+        }
+      }
+
+      .cs_store {
+        --n: 1;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+        width: calc(var(--n) * 100%);
+        /* height: 50vw;
+          max-height: 100vh; */
+        height: 100vh;
+
+        img {
+          width: 100%;
+          width: calc(656px / var(--n));
+        }
+      }
+
+      .fc-c {
+        margin: 0 9%;
+      }
+
+      @media screen and (max-width: 1426px) {
+        .cs_store {
+          img {
+            width: 100%;
+            width: calc(550px / var(--n));
+          }
+        }
+      }
+
+      @media screen and (max-width: 885px) {
+        .cs_store {
+          img {
+            width: 100%;
+            width: calc(350px / var(--n));
+          }
+        }
+
+        .fc-c {
+          margin: 0 2%;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .cs_store {
+          img {
+            width: 100%;
+            width: calc(250px / var(--n));
+          }
+        }
+
+        .fc-c {
+          margin: 0 -20%;
+        }
+      }
+
+      @media screen and (max-width: 400px) {
+        .cs_store {
+          img {
+            width: 100%;
+            width: calc(200px / var(--n));
+          }
+        }
+
+        .fc-c {
+          margin: 0 -35%;
+        }
+      }
+
+      @media screen and (width: 280px) {
+        .cs_store {
+          img {
+            width: 100%;
+            width: calc(150px / var(--n));
+          }
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .cs_store {
+          height: 50vh;
+        }
+      }
+
+      .flip-card {
+        perspective: 1000px;
+        width: 480px;
+        height: 300px;
+      }
+
+      .flip-card-inner {
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.5s;
+      }
+
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .flip-card-front,
+      .flip-card-back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden;
+      }
+
+      .flip-card-front {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+      }
+
+      .flip-card-back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        transform: rotateY(180deg);
+      }
+
+      .product {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 20px;
+      }
+
+      .container-product-artist {
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      .img-size {
+        width: 100%;
+      }
+
+      .arrow {
+        position: relative;
+        top: 0;
+        left: 81%;
+        background-color: #c02842;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s;
+      }
+
+      #rotateIcon {
+        width: 100%;
+        transform-origin: 50% 50%;
+        transition: transform 0.5s;
+      }
+
+      .arrow2 {
+        position: relative;
+        top: 0;
+        left: 72%;
+        background-color: #c02842;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s;
+      }
+
+      #rotateIcon2 {
+        width: 100%;
+        transform-origin: 50% 50%;
+        transition: transform 0.5s;
+      }
+
+      .arrow3 {
+        position: relative;
+        top: 0;
+        left: 81%;
+        background-color: #c02842;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s;
+      }
+
+      #rotateIcon3 {
+        width: 100%;
+        transform-origin: 50% 50%;
+        transition: transform 0.5s;
+      }
+
+      .collapse {
+        overflow: hidden;
+        height: 0;
+        transition: height 0.5s;
+        margin-top: 10px;
+      }
+
+      .card-body {
+        border: none;
+        background: transparent;
+      }
+
+      .rotated {
+        transform: rotate(180deg);
+      }
+
+      .img-m-1 {
+        margin-bottom: -9.5%;
+      }
+
+      @media screen and (max-width: 768px) {
+        .arrow,
+        .arrow2,
+        .arrow3 {
+          width: 30px;
+          height: 30px;
+        }
+
+        .img-m-1 {
+          margin-bottom: -11%;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .arrow,
+        .arrow2,
+        .arrow3 {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img
+        src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Header and Main Prizes resize.png"
+        alt=""
+        class="main-img"
+      />
+    </div>
+
+    <div style="overflow: hidden">
+      <div class="cs">
+        <img
+          src="https://api.cetaphil.com.my/assets/images/CNY%20WEBSITE-FINAL_2nd%20Prize.png"
+        />
+        <img
+          src="https://api.cetaphil.com.my/assets/images/CNY%20WEBSITE-FINAL_3rd%20Prize.png"
+        />
+        <img
+          src="https://api.cetaphil.com.my/assets/images/CNY%20WEBSITE-FINAL_Last%20Price.png"
+        />
+      </div>
+    </div>
+
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      "
+      id="toEnterMain"
+    >
+      <p class="toEnterHeader"><strong>How to enter:</strong></p>
+
+      <div
+        class="toEnterDiv"
+        style="display: flex; font-weight: 600; margin-bottom: 17%"
+      >
+        <div class="toEnterDivChild">
+          <img
+            src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Shopping Icon.png"
+            alt=""
+            class="img1"
+          />
+          <p>
+            Spend min. RM88 on any <br />
+            Cetaphil products.
+          </p>
+        </div>
+        <div class="toEnterDivChild">
+          <img
+            src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Receipt Icon.png"
+            alt=""
+            class="img2"
+          />
+          <p>
+            Submit receipt, name and <br />
+            NRIC number to 010-793 1060 <br />
+            via Whatsapp.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="pink-gradient-header-div">
+      <p class="pink-gradient-header">MUSIC VIDEO</p>
+      <p class="pink-gradient-header">
+        SAY HI TO OUR MYFM DJS <br />
+        IN PERSON AND GET FREE <br />
+        CETAPHIL GOODIES!
+      </p>
+    </div>
+
+    <div style="overflow: hidden">
+      <div class="cs_store">
+        <div class="fc-c">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img
+                  src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Jack Lim Card.png"
+                />
+              </div>
+              <div class="flip-card-back">
+                <img
+                  src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Jack Lim Info Card.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fc-c">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img
+                  src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Mei Yan Card.png"
+                />
+              </div>
+              <div class="flip-card-back">
+                <img
+                  src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Mei Yan Info Card.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fc-c">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img
+                  src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Emely Card.png"
+                />
+              </div>
+              <div class="flip-card-back">
+                <img
+                  src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Emely Info Card.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="container-product-artist">
+        <img
+          src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Normal Sensitive Care.png"
+          alt=""
+          class="img-size img-m-1"
+        />
+        <button
+          class="arrow"
+          type="button"
+          onclick="toggleCollapse('collapseDiv1', 'rotateIcon')"
+        >
+          <img
+            src="https://api.cetaphil.com.my/assets/images/down-arrow-white.png"
+            id="rotateIcon"
+            alt=""
+          />
+        </button>
+        <div class="collapse" id="collapseDiv1">
+          <div class="card-body">
+            <img
+              src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Normal Sensitive Care Products info.png"
+              alt=""
+              class="img-size"
+            />
+          </div>
+        </div>
+        <img
+          src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Normal Sensitive Care Products.png"
+          alt=""
+          class="img-size"
+        />
+      </div>
+
+      <div class="container-product-artist">
+        <img
+          src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Optimal Hydration Care.png"
+          alt=""
+          class="img-size img-m-1"
+        />
+        <button
+          class="arrow2"
+          type="button"
+          onclick="toggleCollapse('collapseDiv2', 'rotateIcon2')"
+        >
+          <img
+            src="https://api.cetaphil.com.my/assets/images/down-arrow-white.png"
+            id="rotateIcon2"
+            alt=""
+          />
+        </button>
+        <div class="collapse" id="collapseDiv2">
+          <div class="card-body">
+            <img
+              src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Optimal Hydration Care Prodcut Info.png"
+              alt=""
+              class="img-size"
+            />
+          </div>
+        </div>
+        <img
+          src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Optimal Hydration Care Products.png"
+          alt=""
+          class="img-size"
+        />
+      </div>
+
+      <div class="container-product-artist">
+        <img
+          src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Brightening Care.png"
+          alt=""
+          class="img-size img-m-1"
+        />
+        <button
+          class="arrow3"
+          type="button"
+          onclick="toggleCollapse('collapseDiv3', 'rotateIcon3')"
+        >
+          <img
+            src="https://api.cetaphil.com.my/assets/images/down-arrow-white.png"
+            id="rotateIcon3"
+            alt=""
+          />
+        </button>
+        <div class="collapse" id="collapseDiv3">
+          <div class="card-body">
+            <img
+              src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Brightening Care Product Info.png"
+              alt=""
+              class="img-size"
+            />
+          </div>
+        </div>
+        <img
+          src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Brightening Care Products.png"
+          alt=""
+          class="img-size"
+        />
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--   
+  <script>
+    const el1 = document.getElementById(
+      "toEnterMain"
+    );
+    const el1Parent =
+    el1.closest(".body");
+  
+    el1Parent.style.width = "100%";
+  </script> -->
+
+<!-- <script>
+    const el2 = document.getElementById(
+      "pink-gradient-header-div"
+    );
+    const el2Parent =
+    el2.closest(".body");
+  
+    el2Parent.style.width = "100%";
+  </script> -->
+
+<script>
+  function toggleCollapse(collapseId, rotateIconId) {
+    var collapse = document.getElementById(collapseId);
+    var icon = document.getElementById(rotateIconId);
+
+    if (collapse.style.height === "0px" || collapse.style.height === "") {
+      collapse.style.height = collapse.scrollHeight + "px";
+    } else {
+      collapse.style.height = "0px";
+    }
+
+    icon.classList.toggle("rotated");
+  }
+
+  const cs = document.querySelector(".cs");
+  let isDragging_again = false;
+  let startX_again, scrollLeft_again;
+
+  cs.addEventListener("mousedown", handleMouseDown_again);
+  cs.addEventListener("mouseup", handleMouseUp_again);
+  cs.addEventListener("mouseleave", handleMouseLeave_again);
+  cs.addEventListener("mousemove", handleMouseMove_again);
+
+  cs.addEventListener("touchstart", handleTouchStart_again);
+  cs.addEventListener("touchend", handleTouchEnd_again);
+  cs.addEventListener("touchmove", handleTouchMove_again);
+
+  function handleMouseDown_again(e) {
+    isDragging_again = true;
+    startX_again = e.pageX - cs.offsetLeft;
+    scrollLeft_again = cs.scrollLeft;
+  }
+
+  function handleMouseUp_again() {
+    isDragging_again = false;
+  }
+
+  function handleMouseLeave_again() {
+    isDragging_again = false;
+  }
+
+  function handleMouseMove_again(e) {
+    if (!isDragging_again) return;
+    e.preventDefault();
+    const x = e.pageX - cs.offsetLeft;
+    const walk = (x - startX_again) * 3;
+    cs.scrollLeft = scrollLeft_again - walk;
+  }
+
+  function handleTouchStart_again(e) {
+    isDragging_again = true;
+    startX_again = e.touches[0].pageX - cs.offsetLeft;
+    scrollLeft_again = cs.scrollLeft;
+  }
+
+  function handleTouchEnd_again() {
+    isDragging_again = false;
+  }
+
+  function handleTouchMove_again(e) {
+    if (!isDragging_again) return;
+    e.preventDefault();
+    const x = e.touches[0].pageX - cs.offsetLeft;
+    const walk = (x - startX_again) * 3;
+    cs.scrollLeft = scrollLeft_again - walk;
+  }
+
+  const cs_store = document.querySelector(".cs_store");
+  let isDragging_again_store = false;
+  let startX_again_store, scrollLeft_store;
+
+  cs_store.addEventListener("mousedown", handleMouseDown_again_store);
+  cs_store.addEventListener("mouseup", handleMouseUp_again_store);
+  cs_store.addEventListener("mouseleave", handleMouseLeave_again_store);
+  cs_store.addEventListener("mousemove", handleMouseMove_again_store);
+
+  cs_store.addEventListener("touchstart", handleTouchStart_again_store);
+  cs_store.addEventListener("touchend", handleTouchEnd_again_store);
+  cs_store.addEventListener("touchmove", handleTouchMove_again_store);
+
+  function handleMouseDown_again_store(e) {
+    isDragging_again_store = true;
+    startX_again_store = e.pageX - cs_store.offsetLeft;
+    scrollLeft_store = cs_store.scrollLeft;
+  }
+
+  function handleMouseUp_again_store() {
+    isDragging_again_store = false;
+  }
+
+  function handleMouseLeave_again_store() {
+    isDragging_again_store = false;
+  }
+
+  function handleMouseMove_again_store(e) {
+    if (!isDragging_again_store) return;
+    e.preventDefault();
+    const x = e.pageX - cs_store.offsetLeft;
+    const walk = (x - startX_again_store) * 3;
+    cs_store.scrollLeft = scrollLeft_store - walk;
+  }
+
+  function handleTouchStart_again_store(e) {
+    isDragging_again_store = true;
+    startX_again_store = e.touches[0].pageX - cs_store.offsetLeft;
+    scrollLeft_store = cs_store.scrollLeft;
+  }
+
+  function handleTouchEnd_again_store() {
+    isDragging_again_store = false;
+  }
+
+  function handleTouchMove_again_store(e) {
+    if (!isDragging_again_store) return;
+    e.preventDefault();
+    const x = e.touches[0].pageX - cs_store.offsetLeft;
+    const walk = (x - startX_again_store) * 3;
+    cs_store.scrollLeft = scrollLeft_store - walk;
+  }
+</script>
