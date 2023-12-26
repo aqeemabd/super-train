@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .cs_store {
+        --n: 1;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+        width: calc(var(--n) * 100%);
+        /* height: 50vw;
+          max-height: 100vh; */
+        height: 100vh;
+
+        img {
+          width: 100%;
+          width: calc(656px / var(--n));
+        }
+      }
+
+      .fc-c {
+        margin: 0 9%;
+      }
+
+      @media screen and (max-width: 1426px) {
+        .cs_store {
+          img {
+            width: 100%;
+            width: calc(550px / var(--n));
+          }
+        }
+      }
+
+      @media screen and (max-width: 885px) {
+        .cs_store {
+          img {
+            width: 100%;
+            width: calc(350px / var(--n));
+          }
+        }
+
+        .fc-c {
+          margin: 0 2%;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .cs_store {
+          img {
+            width: 100%;
+            width: calc(250px / var(--n));
+          }
+        }
+
+        .fc-c {
+          margin: 0 -20%;
+        }
+      }
+
+      @media screen and (max-width: 400px) {
+        .cs_store {
+          img {
+            width: 100%;
+            width: calc(200px / var(--n));
+          }
+        }
+
+        .fc-c {
+          margin: 0 -35%;
+        }
+      }
+
+      @media screen and (width: 280px) {
+        .cs_store {
+          img {
+            width: 100%;
+            width: calc(150px / var(--n));
+          }
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .cs_store {
+          height: 50vh;
+        }
+      }
+
+      .flip-card {
+        perspective: 1000px;
+        width: 480px;
+        height: 300px;
+      }
+
+      .flip-card-inner {
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.5s;
+      }
+
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .flip-card-front,
+      .flip-card-back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden;
+      }
+
+      .flip-card-front {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+      }
+
+      .flip-card-back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        transform: rotateY(180deg);
+      }
+    </style>
+    <div style="overflow: hidden">
+      <div class="cs_store">
+        <div class="fc-c">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img
+                  src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Jack Lim Card.png"
+                />
+              </div>
+              <div class="flip-card-back">
+                <img
+                  src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Jack Lim Info Card.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fc-c">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img
+                  src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Mei Yan Card.png"
+                />
+              </div>
+              <div class="flip-card-back">
+                <img
+                  src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Mei Yan Info Card.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fc-c">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img
+                  src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Emely Card.png"
+                />
+              </div>
+              <div class="flip-card-back">
+                <img
+                  src="https://api.cetaphil.com.my/assets/images/CNY WEBSITE-FINAL_Emely Info Card.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const cs_store = document.querySelector(".cs_store");
+      let isDragging_again_store = false;
+      let startX_again_store, scrollLeft_store;
+
+      cs_store.addEventListener("mousedown", handleMouseDown_again_store);
+      cs_store.addEventListener("mouseup", handleMouseUp_again_store);
+      cs_store.addEventListener("mouseleave", handleMouseLeave_again_store);
+      cs_store.addEventListener("mousemove", handleMouseMove_again_store);
+
+      cs_store.addEventListener("touchstart", handleTouchStart_again_store);
+      cs_store.addEventListener("touchend", handleTouchEnd_again_store);
+      cs_store.addEventListener("touchmove", handleTouchMove_again_store);
+
+      function handleMouseDown_again_store(e) {
+        isDragging_again_store = true;
+        startX_again_store = e.pageX - cs_store.offsetLeft;
+        scrollLeft_store = cs_store.scrollLeft;
+      }
+
+      function handleMouseUp_again_store() {
+        isDragging_again_store = false;
+      }
+
+      function handleMouseLeave_again_store() {
+        isDragging_again_store = false;
+      }
+
+      function handleMouseMove_again_store(e) {
+        if (!isDragging_again_store) return;
+        e.preventDefault();
+        const x = e.pageX - cs_store.offsetLeft;
+        const walk = (x - startX_again_store) * 3;
+        cs_store.scrollLeft = scrollLeft_store - walk;
+      }
+
+      function handleTouchStart_again_store(e) {
+        isDragging_again_store = true;
+        startX_again_store = e.touches[0].pageX - cs_store.offsetLeft;
+        scrollLeft_store = cs_store.scrollLeft;
+      }
+
+      function handleTouchEnd_again_store() {
+        isDragging_again_store = false;
+      }
+
+      function handleTouchMove_again_store(e) {
+        if (!isDragging_again_store) return;
+        e.preventDefault();
+        const x = e.touches[0].pageX - cs_store.offsetLeft;
+        const walk = (x - startX_again_store) * 3;
+        cs_store.scrollLeft = scrollLeft_store - walk;
+      }
+    </script>
+  </body>
+</html>
